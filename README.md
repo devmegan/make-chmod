@@ -11,6 +11,10 @@ A makefile that wraps the unix [`chmod`](https://man7.org/linux/man-pages/man1/c
 - `make readable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file readable
 - `make unreadable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file unreadable
 
+### Write permissions (r)
+- `make writeable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file writable
+- `make writeable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file writable
+
 ### Execute permissions (x)
 - `make executable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file executable
 - `make unexecutable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file unexecutable
