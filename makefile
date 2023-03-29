@@ -1,15 +1,15 @@
 help:
 	@echo "Usage:"
 	@echo "- make help: Display this help message"
-	@echo "- make executable FILE=<file>: Make the specified file executable"
-	@echo "- make unexecutable FILE=<file>: Make the specified file unexecutable"
+	@echo "- make executable FILE=<relative_file_path> [CLASS=<user_class[u|g|o|a]>]: Make the specified file executable"
+	@echo "- make unexecutable FILE=<relative_file_path> [CLASS=<user_class[u|h|o|a]>]: Make the specified file unexecutable"
 
 executable:
-	chmod +x $(FILE)
+	chmod $(if $(CLASS),$(CLASS))+x $(FILE)
 	$(print_permissions)
 
 unexecutable:
-	chmod -x $(FILE)
+	chmod $(if $(CLASS),$(CLASS))-x $(FILE)
 	$(print_permissions)
 
 define print_permissions
