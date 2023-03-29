@@ -1,11 +1,16 @@
 help:
-	@echo "Usage:"
-	@echo "HELP"
+	@echo "makefile usage:\n"
+	@echo "help:"
 	@echo "- make help: Display this help message"
-	echo "READ"
+	${MAKE} -s help-read help-execute
+
+help-read:
+	@echo "\nread:"
 	@echo "- make readabable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file readabable"
 	@echo "- make unreadable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file unreadable"
-	@echo "EXECUTE"
+
+help-execute:
+	@echo "\n execute:"
 	@echo "- make executable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file executable"
 	@echo "- make unexecutable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file unexecutable"
 
