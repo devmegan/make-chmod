@@ -1,21 +1,23 @@
 help:
 	@echo "Usage:"
 	@echo "- make help: Display this help message"
-	@echo "- make executable FILE=<relative_file_path> [CLASS=<user_class[u|g|o|a]>]: Make the specified file executable"
-	@echo "- make unexecutable FILE=<relative_file_path> [CLASS=<user_class[u|h|o|a]>]: Make the specified file unexecutable"
+	@echo "- make executable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file executable"
+	@echo "- make unexecutable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]: Make the specified file unexecutable"
 
 executable:
-	chmod $(if $(CLASS),$(CLASS))+x $(FILE)
-	$(print_permissions)
+	$(MAKE) -s set_permissions OPERATOR=+x FILE=$(FILE) CLASS=$(CLASS)
 
 unexecutable:
-	chmod $(if $(CLASS),$(CLASS))-x $(FILE)
-	$(print_permissions)
+	$(MAKE) -s set_permissions OPERATOR=-x FILE=$(FILE) CLASS=$(CLASS)
 
-define print_permissions
+set_permissions:
+	chmod $(if $(CLASS),$(CLASS))$(OPERATOR) $(FILE)
+	$(print_permissions)
+	$(MAKE) -s print_permissions FILE=$(FILE)
+
+print_permissions:
 	@echo "Updated permissions for $(FILE):"
 	@echo "`ls -l $(FILE) | cut -d" " -f1`"
-endef
 
-.PHONY: executable unexecutable help
+.PHONY: help executable unexecutable set_permissions print_permissions
 .SILENT:
