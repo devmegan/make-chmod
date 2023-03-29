@@ -7,6 +7,10 @@ A makefile that wraps the unix [`chmod`](https://man7.org/linux/man-pages/man1/c
 ### Help
 - `make help` : get help on usage
 
+### Read permissions (r)
+- `make readable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file readable
+- `make unreadable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file unreadable
+
 ### Execute permissions (x)
 - `make executable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file executable
 - `make unexecutable FILE=<relative_file_path> [CLASS=<user_class[a|g|o|u]>]` : make a file unexecutable
